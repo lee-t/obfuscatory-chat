@@ -15,12 +15,12 @@ load_dotenv()
 chat_model = ChatGoogle(
     api_key=os.environ.get("GOOGLE_API_KEY"),
     system_prompt="You are a helpful assistant.",
-    model="gemini-1.5-pro-latest",
+    model="gemini-2.5-pro-exp-03-25",
 )
 
 # Set some Shiny page options
 ui.page_opts(
-    title="Hello Google Gemini 1.5 Pro Chat",
+    title="Hello Google Gemini 2.5-experimental Chat",
     fillable=True,
     fillable_mobile=True,
 )
@@ -35,3 +35,4 @@ chat.ui()
 async def handle_user_input(user_input: str):
     response = await chat_model.stream_async(user_input)
     await chat.append_message_stream(response)
+#IS THERE A WAY TO SHOW THINKING TOKENS?
